@@ -36,8 +36,30 @@ var lastHover
 var highlightScenarios = '000000000000'.split('').map(d => +d)
 var mouseover = [64, 64]
 
-
+var colorChoice = 0
 var colors = {t: '#4CAF50', f: '#F44336', m: '#FF9800'}
+
+function changeColor(){
+  colorChoice ^= 1;
+
+  if (colorChoice == 1)
+    colors = {t: '#2c7bb6', f: '#f73434', m: '#dfaf90'}
+  else
+    colors = {t: '#4CAF50', f: '#F44336', m: '#FF9800'}
+
+  d3.entries(colors).forEach(({key, value}) => {
+    var c = d3.color(value)
+    c.opacity = .2
+    colors[key + '0'] = c + ''
+  })
+  d3.selectAll('div.team-container').html('')
+    .each(drawTeam)
+
+  d3.selectAll('path.outcome-line').at({stroke: d => colors[d.type], d: 'M 0 0 H 0'})
+
+  setTimeout(update, 20)
+}
+
 d3.entries(colors).forEach(({key, value}) => {
   var c = d3.color(value)
   c.opacity = .2
