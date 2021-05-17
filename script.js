@@ -5,11 +5,11 @@ var teams = 'DK RNG PSG MAD C9 PGG'.split(' ')
 
 var teamText = {
   PSG: `One win and PSG at least ties.`,
-  DK: `One win guarentees advancement.`, 
+  DK: `One win guarantees advancement.`, 
   RNG: `Cannot be eliminated without a tiebreaker.`,
   MAD: `MAD beating only C9 gets them a tiebreaker.`,
   C9: `Even with a perfect run, C9 can still be eliminated.`,
-  PGG: `PGG needs the stars to allign.`,
+  PGG: `PGG needs the stars to align.`,
 }
 
 d3.keys(teamText).forEach(d => {
